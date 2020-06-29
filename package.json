@@ -1,0 +1,19 @@
+{
+  "name": "styled-theme-tokens",
+  "version": "0.0.1",
+  "description": "An easy way to create react theme defintions with them variations",
+  "main": "index.js",
+  "author": "Zerry Hogan",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  }
+}
