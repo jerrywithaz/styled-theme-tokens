@@ -1,7 +1,7 @@
 {
   "name": "styled-theme-tokens",
-  "version": "0.0.1",
-  "description": "An easy way to create react theme defintions with them variations",
+  "version": "0.0.3",
+  "description": "Easily configure and manage themes for styled components in React.",
   "main": "index.js",
   "author": "Zerry Hogan",
   "license": "MIT",
@@ -15,5 +15,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "git add -A && yarn build && cp -r ./lib/* . && rm -rf ./lib",
+    "postpublish": "git clean -fd"
   }
 }

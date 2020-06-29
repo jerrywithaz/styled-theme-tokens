@@ -1,2 +1,2 @@
-export type { ConvertToThemeObject, ThemeToken, ThemeVariant } from './types';
-export { default as ThemeProvider } from './components/ThemeProvider';
+export type { ConvertToThemeObject, ThemeToken } from './types';
+export { default as ThemeProvider, token, resolveTheme } from './components/ThemeProvider';

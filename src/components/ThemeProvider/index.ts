@@ -1,3 +1,2 @@
-export { token } from './ThemeProvider.utils';
-export type { ThemeToken, ConvertToThemeObject } from './ThemeProvider.types'; // eslint-ignore-line
+export { token, resolveTheme } from './ThemeProvider.utils';
 export { default } from './ThemeProvider.component';
