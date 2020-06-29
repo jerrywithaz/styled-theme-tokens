@@ -1,6 +1,6 @@
 {
   "name": "styled-theme-tokens",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Easily configure and manage themes for styled components in React.",
   "main": "index.js",
   "author": "Zerry Hogan",

@@ -83,3 +83,48 @@ Depending on how you defined your theme, in a styled component you could access 
 ```css
     color: ${theme.colors.primary.dark.color};
 ```
+
+## Example Theme Definition
+
+```ts
+import { token } from 'styled-theme-tokens';
+
+const theme = {
+    colors: {
+        primary: token("mode", {
+            dark: "lightred",
+            light: "red"
+        }),
+        secondary: token("mode", {
+            dark: "lightblue",
+            light: "blue"
+        })
+    },
+    sizes: {
+        headerHeight: token("size", {
+            compact: 24,
+            dense: 48
+        }),
+        sidebar: 400
+    }
+}
+
+```
+
+## Typescript
+
+To use the properly with TypeScript and Styled-Components you will need to created a styled components declaration file to override the `DefaultTheme` from styled-components. This will ensure that your styled-components have the correct theme object values being used.
+
+Example:
+
+```tsx
+// /src/declarations/styled.d.ts
+import 'styled-components'
+import { Theme } from './source/to/theme/typescript/definition';
+import { ConvertToThemeObject } from 'styled-theme-tokens';
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends ConvertToThemeObject<Theme> {}
+}
+
+```
