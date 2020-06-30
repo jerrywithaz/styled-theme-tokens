@@ -3,12 +3,12 @@ import { ThemeProvider as StyledComponentsThemeProvider, DefaultTheme } from 'st
 import { ThemeProviderProps } from './ThemeProvider.types';
 import { resolveTheme } from './ThemeProvider.utils';
 
-const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({ children, variants, theme }) => {
+const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({ children, variants, theme, fromJSON }) => {
 
-    const [ resolvedTheme, setResolvedTheme ] = useState<DefaultTheme>(resolveTheme(theme, variants));
+    const [ resolvedTheme, setResolvedTheme ] = useState<DefaultTheme>(resolveTheme(theme, variants, fromJSON));
 
     useEffect(() => {
-        setResolvedTheme(resolveTheme(theme, variants));
+        setResolvedTheme(resolveTheme(theme, variants, fromJSON));
     }, [ variants ]);
 
     return (

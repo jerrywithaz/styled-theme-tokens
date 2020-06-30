@@ -7,10 +7,12 @@
  */
 function deepMapKeys<TResult extends Record<string, any> = {}>(
     obj: Record<string, any> | Array<any>, 
-    func: (value: any, key: string) => any
+    func: (value: any, key: string) => any,
+    alwaysReplaceWithResult?: boolean
 ): TResult {
+    
     if (Array.isArray(obj)) {
-      return obj.map(val => deepMapKeys(val, func)) as any;  
+      return obj.map(val => deepMapKeys(val, func, alwaysReplaceWithResult)) as any;  
     }
     else {
         if (typeof obj === 'object') {
@@ -20,7 +22,13 @@ function deepMapKeys<TResult extends Record<string, any> = {}>(
                 const value = obj[key];
                 const result = func(value, key);
 
-                acc[key] = typeof value === 'object' ? deepMapKeys(value, func) : result;
+                if (alwaysReplaceWithResult) {
+                    acc[key] = result;
+                    acc[key] = typeof result === 'object' ? deepMapKeys(result, func, alwaysReplaceWithResult) : result;
+                }
+                else {
+                    acc[key] = typeof value === 'object' ? deepMapKeys(value, func, alwaysReplaceWithResult) : result;
+                }
 
                 return acc;
 

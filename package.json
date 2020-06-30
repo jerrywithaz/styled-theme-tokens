@@ -1,14 +1,20 @@
 {
   "name": "styled-theme-tokens",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Easily configure and manage themes for styled components in React.",
   "main": "index.js",
   "author": "Zerry Hogan",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-typescript": "^7.10.1",
+    "@types/jest": "^26.0.3",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.0",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
     "typescript": "^3.9.5"
   },
   "dependencies": {
@@ -18,7 +24,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "prepublishOnly": "git add -A && yarn build && cp -r ./lib/* . && rm -rf ./lib",
     "postpublish": "git clean -fd"
   }

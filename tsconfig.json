@@ -23,7 +23,7 @@
         "ESNext.AsyncIterable"
       ],
       "jsx": "react",
-      "types": ["react", "react-dom", "styled-components"]
+      "types": ["react", "react-dom", "styled-components", "jest"]
     },
     "compileOnSave": true,
     "include": [

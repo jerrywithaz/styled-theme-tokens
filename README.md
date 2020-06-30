@@ -92,11 +92,11 @@ import { token } from 'styled-theme-tokens';
 const theme = {
     colors: {
         primary: token("mode", {
-            dark: "lightred",
+            dark: "darkred",
             light: "red"
         }),
         secondary: token("mode", {
-            dark: "lightblue",
+            dark: "darkblue",
             light: "blue"
         })
     },
@@ -105,7 +105,41 @@ const theme = {
             compact: 24,
             dense: 48
         }),
-        sidebar: 400
+        sidebarWidth: 400
+    }
+}
+
+```
+
+## Example Theme Definition as JSON
+
+```json
+{
+    "colors": {
+        "primary":  {
+            "token": "mode",
+            "values": {
+                "dark": "darkred",
+                "light": "red",
+            }
+        },
+        "secondary":  {
+            "token": "mode",
+            "values": {
+                "dark": "darkblue",
+                "light": "blue",
+            }
+        }
+    },
+    "sizes": {
+        "headerHeight":  {
+            "token": "size",
+            "values": {
+                "compact": 24,
+                "dense": 48,
+            }
+        },
+        "sidebarWidth": 400
     }
 }
 

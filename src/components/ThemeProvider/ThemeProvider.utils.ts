@@ -1,4 +1,4 @@
-import { ThemeVariant, ThemeToken } from "./../../types";
+import { ThemeVariant, ThemeToken, UnresolvedThemeObject } from "./../../types";
 import deepMapObject from './../../utils/deepMapObject';
 import { DefaultTheme } from "styled-components";
 
@@ -13,7 +13,8 @@ import { DefaultTheme } from "styled-components";
 export function token<T = string>(name: string, values: Record<string, T>): ThemeToken<T> {
     return (variants: ThemeVariant): T => {
         const variant = variants[name];
-        return values[variant];
+        if (variant) return values[variant];
+        else throw new Error(`Styled Theme Tokens: Unable to find the theme variant named: ${name}`);
     };
 }
 
@@ -23,11 +24,14 @@ export function token<T = string>(name: string, values: Record<string, T>): Them
  * @param theme The theme to resolve.
  * @param variants The theme variants such as `{ mode: "light" }` or `{ mode: "dark" }`
  */
-export function resolveTheme(theme: object, variants?: Record<string, any>): DefaultTheme {
+export function resolveTheme(theme: UnresolvedThemeObject, variants?: Record<string, any>, fromJSON?: boolean): DefaultTheme {
     return deepMapObject<DefaultTheme>(theme, (value) => {
         if (typeof value === "function" && variants) {
             return value(variants);
         }
+        if (fromJSON && typeof value === "object" && variants && value.hasOwnProperty("token") && value.hasOwnProperty("values")) {
+            return token(value.token, value.values)(variants);
+        }
         return value;
-    });
+    }, fromJSON);
 }

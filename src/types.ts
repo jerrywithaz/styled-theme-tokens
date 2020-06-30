@@ -1,5 +1,7 @@
 export type ThemeVariant = Record<string, string>;
 
+export type UnresolvedThemeObject = Record<string, any>;
+
 /**
  * A Theme Token is a function that will be resolved to the current variant
  * value whenever the theme is created at runtime.
@@ -12,6 +14,6 @@ type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 /**
  * Converts the typescript defintion of a theme to the resolved theme object.
  */
-export type ConvertToThemeObject<O extends object> = {
-  [K in keyof O]: O[K] extends Function ? ReturnType<O[K]> : O[K] extends object ? ConvertToThemeObject<O[K]> : O[K]
+export type ConvertToThemeObject<O extends UnresolvedThemeObject> = {
+  [K in keyof O]: O[K] extends Function ? ReturnType<O[K]> : O[K] extends UnresolvedThemeObject ? ConvertToThemeObject<O[K]> : O[K]
 };
